@@ -1,18 +1,23 @@
 package com.example.microlearning.service;
 
 import com.example.microlearning.model.Topic;
+import com.example.microlearning.repository.TopicRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.net.URL;
-import java.sql.Timestamp;
 import java.util.List;
 
 @Service
 public class TopicService {
 
-    public List<Topic> getTopics() throws Exception {
-        return List.of(new Topic(Long.valueOf("1"), "Willy The Whale",
-                "Learn about the whale", new URL("https://www.google.com/?client=safari"),
-                Integer.valueOf("0"), Integer.valueOf("0"), Long.valueOf("0"), new Timestamp(0), new Timestamp(0)));
+    public final TopicRepository topicRepository;
+
+    @Autowired
+    public TopicService(TopicRepository topicRepository) {
+        this.topicRepository = topicRepository;
+    }
+
+    public List<Topic> getTopics() {
+        return topicRepository.findAll();
     }
 }
