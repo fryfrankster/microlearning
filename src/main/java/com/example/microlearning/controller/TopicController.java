@@ -23,7 +23,7 @@ public class TopicController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Topic>> getTopics() throws Exception {
+    public ResponseEntity<List<Topic>> getTopics() {
         return new ResponseEntity<>(topicService.getTopics(), HttpStatus.OK);
     }
 }

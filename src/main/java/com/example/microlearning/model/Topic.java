@@ -40,11 +40,13 @@ public class Topic implements Serializable {
     @Column(name = "recommended")
     private Long recommended;
 
-    @Column(name="created")
+    @Column(name = "created")
     private Timestamp created;
 
-    @Column(name="updated")
+    @Column(name = "updated")
     private Timestamp updated;
+
+    public Topic() {}
 
     public Topic(Long id,
                  String title,
@@ -66,7 +68,23 @@ public class Topic implements Serializable {
         this.updated = updated;
     }
 
-    public Topic() {}
+    public Topic(String title,
+                 String description,
+                 URL url,
+                 Integer likes,
+                 Integer dislikes,
+                 Long recommended,
+                 Timestamp created,
+                 Timestamp updated) {
+        this.title = title;
+        this.description = description;
+        this.url = url;
+        this.likes = likes;
+        this.dislikes = dislikes;
+        this.recommended = recommended;
+        this.created = created;
+        this.updated = updated;
+    }
 
     public Long getId() {
         return id;
@@ -138,5 +156,20 @@ public class Topic implements Serializable {
 
     public void setUpdated(Timestamp updated) {
         this.updated = updated;
+    }
+
+    @Override
+    public String toString() {
+        return "Topic{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", url=" + url +
+                ", likes=" + likes +
+                ", dislikes=" + dislikes +
+                ", recommended=" + recommended +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
     }
 }
